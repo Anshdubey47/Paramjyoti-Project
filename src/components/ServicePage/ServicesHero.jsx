@@ -3,31 +3,31 @@ import React, { useState } from "react";
 const services = [
   {
     title: "Social Media Marketing",
-    image: "src/assets/images/scroll1.png",
+    image: "/src/assets/images/scroll1.png",
   },
   {
     title: "Web Design",
-    image: "src/assets/images/scroll2.png",
+    image: "/src/assets/images/scroll2.png",
   },
   {
     title: "System Integration",
-    image: "src/assets/images/scroll7.png",
+    image: "/src/assets/images/scroll7.png",
   },
   {
     title: "Staff Augmentation",
-    image: "src/assets/images/scroll3.png",
+    image: "/src/assets/images/scroll3.png",
   },
   {
     title: "Software Development",
-    image: "src/assets/images/scroll4.png",
+    image: "/src/assets/images/scroll4.png",
   },
   {
     title: "Training & Upskilling",
-    image: "src/assets/images/scroll5.png",
+    image: "/src/assets/images/scroll5.png",
   },
   {
     title: "Hardware Maintenance",
-    image: "src/assets/images/scroll6.png",
+    image: "/src/assets/images/scroll6.png",
   },
 ];
 
@@ -84,3 +84,4 @@ const ServicesHero = () => {
 };
 
 export default ServicesHero;
+
