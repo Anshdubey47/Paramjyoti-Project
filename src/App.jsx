@@ -1,59 +1,77 @@
-import { useState } from "react";
-import HomePage from "./components/Home/HomePage";
+import { useEffect } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import Lenis from "lenis";
+import HomePage, { ContactSection } from "./components/Home/HomePage";
 import AboutPage from "./components/About/AboutPage";
-import React from "react";
 import Services from "./components/ServicePage/Services";
 import StaffAugmentation from "./components/staff-augmentation/StaffAugmentation";
 import SystemIntegrate from "./components/SystemIntegrationPage/SystemIntegrate";
-import TrainingUpskillingDetailPage from "./components/TrainingUpskillingDetailPage"
+import TrainingUpskillingDetailPage from "./components/TrainingUpskillingDetailPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import WebDesignPage from "./components/WebDesignPage"; 
-import FAQSection from "./components/FAQ/FAQSection";
-import SocialMediaMarketing from "./components/social-media-marketing/SocialMediaMarketing.jsx";
-import BlogPage from "./components/blog/BlogPage.jsx";
-import Portfolio from "./components/portfolio/Portfolio.jsx";
-import ContactUs from "./components/contact-us/ContactUs.jsx";
-import BlogDetail from "./components/blog-detail/BlogDetail.jsx";
-import PortfolioDetails from "./components/PortfolioDetails/PortfolioDetails.jsx";
-import Careers from "./components/Careers/Careers.jsx";
-import CareersApply from "./components/CareersApply/CareersApply.jsx";
-import NotFound from "./components/NotFound.jsx";
+import NotFound from "./components/NotFound";
+
+const MotionDiv = motion.div;
 
 const App = () => {
-  const [page, setPage] = useState("home");
+  const location = useLocation();
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 0.85,
+      smoothWheel: true,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.2,
+    });
+
+    let rafId = 0;
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId = window.requestAnimationFrame(raf);
+    };
+
+    rafId = window.requestAnimationFrame(raf);
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-[#f5f5f7] flex flex-col">
-      <Navbar currentPage={page} onNavigate={setPage} />
+      <Navbar />
 
       <main className="flex-1">
-        {page === "home" && <HomePage />}
-        {page === "about" && <AboutPage />}
-        {page === "services" && <Services />}
-        {page === "staff" && <StaffAugmentation />}
-        {page === "system" && <SystemIntegrate />}
-        {page === "training" && <TrainingUpskillingDetailPage />}
+        <AnimatePresence mode="wait">
+          <MotionDiv
+            key={location.pathname}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+          >
+            <Routes location={location}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/staff" element={<StaffAugmentation />} />
+              <Route path="/system" element={<SystemIntegrate />} />
+              <Route path="/training" element={<TrainingUpskillingDetailPage />} />
+              <Route path="/home" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </MotionDiv>
+        </AnimatePresence>
       </main>
 
+      <ContactSection />
       <Footer />
-    <div>
-      <Services /> 
-      <SystemIntegrate /> 
-      <SocialMediaMarketing/>
-      <BlogPage/>
-      <Portfolio/>
-      <TrainingUpskillingDetailPage />
-      <WebDesignPage />
-      <FAQSection/>
-      <ContactUs/>
-       <BlogDetail/> 
-       <PortfolioDetails/> 
-       <Careers/> 
-       <CareersApply/> 
-       <NotFound/> 
     </div>
-  </div>
   );
 };
 
