@@ -1,8 +1,41 @@
-import { ContactSection } from "../Home/HomePage";
+import { motion } from "framer-motion";
+import executiveImg from "../../assets/executive.jpg";
+import honestyImg from "../../assets/honesty.jpg";
+import negotiationImg from "../../assets/negotiation.jpg";
+import sa1Img from "../../assets/sa-1.jpg";
+import sa2Img from "../../assets/sa-2.jpg";
+import sa3Img from "../../assets/sa-3.jpg";
+import manpowerImg from "../../assets/manpower.jpg";
+import c5 from "../../assets/images/c5.png";
+import c6 from "../../assets/images/c6.png";
+import c7 from "../../assets/images/c7.png";
+import c8 from "../../assets/images/c8.png";
+import c9 from "../../assets/images/c9.png";
+import c10 from "../../assets/images/c10.png";
+import c11 from "../../assets/images/c11.png";
+import c12 from "../../assets/images/c12.png";
+import c13 from "../../assets/images/c13.png";
+import c14 from "../../assets/images/c14.png";
+
+const aboutImg = "/aboutus.png";
+const MotionSection = motion.section;
+const MotionDiv = motion.div;
+
+const sectionReveal = {
+  initial: { opacity: 0, y: 26 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.45, ease: "easeOut" },
+};
 
 const AboutHero = () => {
   return (
-    <section className="bg-[#111827] text-white">
+    <MotionSection
+      className="bg-[#111827] text-white"
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+    >
       <div className="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-[1.1fr,0.9fr] gap-10 items-center">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium mb-4">
@@ -28,22 +61,19 @@ const AboutHero = () => {
         </div>
         <div className="rounded-2xl overflow-hidden bg-black/40">
           <img
-            src="/aboutus.png"
+            src={aboutImg}
             alt="About Param Jyoti"
-            className="w-full h-64 lg:h-72 object-cover opacity-90"
+            className="w-full aspect-[16/10] object-cover opacity-90"
           />
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 };
 
 const AboutStory = () => {
   return (
-    <section
-      id="about-details-anchor"
-      className="bg-white"
-    >
+    <MotionSection id="about-details-anchor" className="bg-white" {...sectionReveal}>
       <div className="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-[1.05fr,0.95fr] gap-10 items-start">
         <div className="space-y-4">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-900">
@@ -78,31 +108,31 @@ const AboutStory = () => {
 
         <div className="grid gap-4">
           <img
-            src="src/assets/executive.jpg"
+            src={executiveImg}
             alt="Team at work"
-            className="w-full h-44 object-cover rounded-2xl"
+            className="w-full aspect-[16/10] object-cover rounded-2xl"
           />
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="src/assets/honesty.jpg"
+              src={honestyImg}
               alt="Honesty"
-              className="h-32 w-full object-cover rounded-2xl"
+              className="w-full aspect-[4/3] object-cover rounded-2xl"
             />
             <img
-              src="src/assets/negotiation.jpg"
+              src={negotiationImg}
               alt="Negotiation"
-              className="h-32 w-full object-cover rounded-2xl"
+              className="w-full aspect-[4/3] object-cover rounded-2xl"
             />
           </div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 };
 
 const TestimonialsBand = () => {
   return (
-    <section className="bg-[#111827] text-white">
+    <MotionSection className="bg-[#111827] text-white" {...sectionReveal}>
       <div className="max-w-5xl mx-auto px-6 py-12 text-center">
         <h2 className="text-xl md:text-2xl font-semibold mb-3">Testimonials</h2>
         <p className="text-sm text-gray-200 leading-relaxed">
@@ -111,7 +141,7 @@ const TestimonialsBand = () => {
           long-term partnership, we work as an extension of their teams.
         </p>
       </div>
-    </section>
+    </MotionSection>
   );
 };
 
@@ -120,41 +150,46 @@ const TeamSection = () => {
     {
       name: "Leadership Team",
       role: "Strategy and Delivery",
-      image: "src/assets/sa-1.jpg",
+      image: sa1Img,
     },
     {
       name: "Technology Team",
       role: "Engineering and Implementation",
-      image: "src/assets/sa-2.jpg",
+      image: sa2Img,
     },
     {
       name: "People Team",
       role: "Recruitment and Training",
-      image: "src/assets/manpower.jpg",
+      image: manpowerImg,
     },
     {
       name: "Media Team",
       role: "Digital and Creative",
-      image: "src/assets/sa-3.jpg",
+      image: sa3Img,
     },
   ];
 
   return (
-    <section className="bg-white">
+    <MotionSection className="bg-white" {...sectionReveal}>
       <div className="max-w-7xl mx-auto px-6 py-12">
         <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6">
           Our team
         </h2>
         <div className="grid gap-6 md:grid-cols-4">
-          {team.map((member) => (
-            <div
+          {team.map((member, index) => (
+            <MotionDiv
               key={member.name}
               className="rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.35, delay: index * 0.06, ease: "easeOut" }}
+              whileHover={{ y: -4 }}
             >
               <img
                 src={member.image}
                 alt={member.name}
-                className="h-40 w-full object-cover"
+                className="w-full aspect-[4/3] object-cover"
               />
               <div className="px-4 py-3">
                 <div className="text-sm font-semibold text-gray-900">
@@ -164,46 +199,39 @@ const TeamSection = () => {
                   {member.role}
                 </div>
               </div>
-            </div>
+            </MotionDiv>
           ))}
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 };
 
 const ClientsSection = () => {
-  const logos = [
-    "src/assets/images/c5.png",
-    "src/assets/images/c6.png",
-    "src/assets/images/c7.png",
-    "src/assets/images/c8.png",
-    "src/assets/images/c9.png",
-    "src/assets/images/c10.png",
-    "src/assets/images/c11.png",
-    "src/assets/images/c12.png",
-    "src/assets/images/c13.png",
-    "src/assets/images/c14.png",
-  ];
+  const logos = [c5, c6, c7, c8, c9, c10, c11, c12, c13, c14];
 
   return (
-    <section className="bg-[#f5f5f7]">
+    <MotionSection className="bg-[#f5f5f7]" {...sectionReveal}>
       <div className="max-w-7xl mx-auto px-6 py-12">
         <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6">
           Our clients
         </h2>
         <div className="grid gap-4 sm:grid-cols-3 md:grid-cols-5 items-center">
-          {logos.map((logo) => (
-            <div
+          {logos.map((logo, index) => (
+            <MotionDiv
               key={logo}
               className="bg-white rounded-xl border border-gray-200 flex items-center justify-center px-4 py-3"
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.25, delay: index * 0.03, ease: "easeOut" }}
             >
               <img src={logo} alt="Client logo" className="h-10 object-contain" />
-            </div>
+            </MotionDiv>
           ))}
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 };
 
@@ -215,10 +243,8 @@ const AboutPage = () => {
       <TestimonialsBand />
       <TeamSection />
       <ClientsSection />
-      <ContactSection />
     </div>
   );
 };
 
 export default AboutPage;
-
