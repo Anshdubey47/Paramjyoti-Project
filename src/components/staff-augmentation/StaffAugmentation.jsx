@@ -5,12 +5,12 @@ import DarkCards from "./DarkCards";
 
 const StaffAugmentation = () => {
   return (
-    <div className="w-full ">
+    <div className="w-full mx-auto px-6">
       <Hero />
       <Commitment />
       <ServicesSection />
       <DarkCards />
-      {/*yaha pe i will insert footer and connect and navbar also*/}
+      {/* Footer / Navbar can go here */}
     </div>
   );
 };
