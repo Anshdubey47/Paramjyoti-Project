@@ -6,10 +6,6 @@ import SpecialService from "./SpecialService.jsx";
 import WhatWeDo from "./WhatWeDo.jsx";
 import ServicesHero from "./ServicesHero.jsx";
 
-/* ─────────────────────────────────────────────
-   Animation Variants
-───────────────────────────────────────────── */
-
 const container = {
   hidden: {},
   show: {
@@ -36,10 +32,7 @@ const Services = () => {
       initial="hidden"
       animate="show"
     >
-      {/* ✨ Background Glow */}
-      <div className="absolute -z-10 blur-3xl opacity-30 
-        bg-gradient-to-r from-purple-500 to-blue-500 
-        w-[600px] h-[600px] rounded-full top-20 left-10" />
+      
 
       {/* HERO */}
       <motion.div variants={fadeUp}>
