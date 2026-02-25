@@ -9,6 +9,7 @@ import Testimonials from "./Testimonials";
 const TrainingUpskillingDetailPage = () => {
   return (
     <>
+      <div className="mx-auto px-6">
       <TrainingHero />
       <TrainingTabs />
       <CourseOverview />
@@ -16,6 +17,7 @@ const TrainingUpskillingDetailPage = () => {
       <CurriculumBreakdown />
       <PricingPlans />
       <Testimonials />
+      </div>
     </>
   );
 };
