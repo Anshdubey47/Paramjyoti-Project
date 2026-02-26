@@ -216,7 +216,7 @@ const ClientsSection = () => {
         <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6">
           Our clients
         </h2>
-        <div className="grid gap-3 sm:grid-cols-3 md:grid-cols-4 items-center">
+        <div className="grid gap-3 sm:grid-cols-3 md:grid-cols-4 items-center mx-6">
           {logos.map((logo, index) => (
             <MotionDiv
               key={logo}
