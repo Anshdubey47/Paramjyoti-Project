@@ -216,17 +216,17 @@ const ClientsSection = () => {
         <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6">
           Our clients
         </h2>
-        <div className="grid gap-4 sm:grid-cols-3 md:grid-cols-5 items-center">
+        <div className="grid gap-3 sm:grid-cols-3 md:grid-cols-4 items-center">
           {logos.map((logo, index) => (
             <MotionDiv
               key={logo}
-              className="bg-white rounded-xl border border-gray-200 flex items-center justify-center px-4 py-3"
+              className="bg-white rounded-xl border border-gray-200 flex items-center justify-center "
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.25, delay: index * 0.03, ease: "easeOut" }}
             >
-              <img src={logo} alt="Client logo" className="h-10 object-contain" />
+              <img src={logo} alt="Client logo" className="object-contain" />
             </MotionDiv>
           ))}
         </div>
