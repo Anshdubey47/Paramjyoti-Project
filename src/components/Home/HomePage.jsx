@@ -63,7 +63,7 @@ const HeroSection = () => {
         alt=""
         className="h-full w-full object-cover"
       />
-    </div>
+   </motion.div>
   ))}
            </div>
           </div>
