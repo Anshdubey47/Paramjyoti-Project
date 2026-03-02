@@ -339,7 +339,6 @@ const MarketingOffices = () => {
     },
   ];
 
-  // STATE MUST BE INSIDE COMPONENT
   const [activeMap, setActiveMap] = useState(offices[0].mapQuery);
 
   return (
@@ -353,20 +352,16 @@ const MarketingOffices = () => {
             Local teams supporting projects and relationships across major cities.
           </p>
         </div>
-<motion.div id="map-section"
-  onClick={() => {
-  setActiveMap(office.mapQuery);
-  document.getElementById("map-section")?.scrollIntoView({ behavior: "smooth" });
-}}
- 
+
         {/* Dynamic Map */}
         <motion.div
-  key={activeMap}
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.4 }}
-  className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100"
->
+          id="map-section"
+          key={activeMap}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100"
+        >
           <iframe
             title="Office Location"
             src={`https://www.google.com/maps?q=${encodeURIComponent(
@@ -382,7 +377,12 @@ const MarketingOffices = () => {
           {offices.map((office) => (
             <div
               key={office.city}
-              onClick={() => setActiveMap(office.mapQuery)}
+              onClick={() => {
+                setActiveMap(office.mapQuery);
+                document
+                  .getElementById("map-section")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
               className={`cursor-pointer rounded-2xl overflow-hidden border flex flex-col h-full transition duration-300
                 ${
                   activeMap === office.mapQuery
