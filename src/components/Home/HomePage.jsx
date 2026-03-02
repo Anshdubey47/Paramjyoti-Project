@@ -307,71 +307,99 @@ const SolutionsSection = () => {
     </section>
   );
 };
-
 const MarketingOffices = () => {
   const offices = [
     {
-      city: "Raipur",
-      image: "/raipur.png",
-      text: "Head office managing operations, projects, and central coordination.",
-    },
-    {
-      city: "Mumbai",
-      image: "/mum.png",
-      text: "Strategic office for enterprise and media engagements.",
-    },
-    {
-      city: "Bhopal",
+      city: "Bhopal (Head Office)",
       image: "/bhop.png",
-      text: "Regional hub for banking and government projects.",
+      mapQuery:
+        "Plot No.162, 3rd Floor, Windsor Square, Beside DDX Mall, Kolar Road, Bhopal, MP 462016",
+      text: "Head Office - Windsor Square, Kolar Road, Bhopal.",
     },
     {
-      city: "Bangalore",
+      city: "Raipur (Marketing)",
+      image: "/raipur.png",
+      mapQuery:
+        "Jai Villa, Yash Vihar Colony, Motinagar, Boriyakhurd, Raipur, Chhattisgarh",
+      text: "Marketing Office - Boriyakhurd, Raipur.",
+    },
+    {
+      city: "Mumbai (Marketing)",
+      image: "/mum.png",
+      mapQuery:
+        "B-702, Shalom Garden, near Galaxy Hospital, Thane, Maharashtra 401107, India",
+      text: "Marketing Office - Thane, Maharashtra.",
+    },
+    {
+      city: "Bengaluru (Marketing)",
       image: "/bang.png",
-      text: "Technology partnerships and talent engagement hub.",
+      mapQuery:
+        "Level 8, Tower 1, Umiya Business Bay, Cessna Business Tech Park, Marathahalli ORR, Bengaluru 560103",
+      text: "Marketing Office - Umiya Business Bay, Bengaluru.",
     },
   ];
+
+  // STATE MUST BE INSIDE COMPONENT
+  const [activeMap, setActiveMap] = useState(offices[0].mapQuery);
 
   return (
     <section className="bg-white">
       <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-xl md:text-2xl font-semibold text-gray-900">
-              Marketing Offices
-            </h2>
-            <p className="text-sm text-gray-600 mt-1">
-              Local teams supporting projects and relationships across major cities.
-            </p>
-          </div>
+        <div>
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-900">
+            Marketing Offices
+          </h2>
+          <p className="text-sm text-gray-600 mt-1">
+            Local teams supporting projects and relationships across major cities.
+          </p>
         </div>
-
-        <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100">
+<motion.div id="map-section"
+  onClick={() => {
+  setActiveMap(office.mapQuery);
+  document.getElementById("map-section")?.scrollIntoView({ behavior: "smooth" });
+}}
+  </motion.div>
+        {/* Dynamic Map */}
+        <motion.div
+  key={activeMap}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.4 }}
+  className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100"
+>
           <iframe
-            title="Param Jyoti Infotech Office Location"
-            src="https://www.google.com/maps?q=Jai+Villa+Yash+Vihar+Colony+Motinagar+Boriyakhurd+Raipur+Chhattisgarh&output=embed"
+            title="Office Location"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(
+              activeMap
+            )}&output=embed`}
             className="w-full h-[360px]"
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
           />
-        </div>
+        </motion.div>
 
+        {/* Clickable Cards */}
         <div className="grid gap-8 md:grid-cols-4 items-stretch">
           {offices.map((office) => (
             <div
               key={office.city}
-              className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 flex flex-col h-full"
+              onClick={() => setActiveMap(office.mapQuery)}
+              className={`cursor-pointer rounded-2xl overflow-hidden border flex flex-col h-full transition duration-300
+                ${
+                  activeMap === office.mapQuery
+                    ? "border-orange-500 shadow-xl scale-105"
+                    : "border-gray-200 hover:shadow-lg"
+                }`}
             >
               <img
                 src={office.image}
                 alt={office.city}
-                className="h-full w-full object-cover"
+                className="h-52 w-full object-cover"
               />
-              <div className="px-4 py-4 flex flex-col items-center flex-1">
-                <h3 className="text-sm font-semibold text-gray-900 mb-2 text-center">
+              <div className="px-4 py-4 text-center">
+                <h3 className="text-sm font-semibold text-gray-900 mb-2">
                   {office.city}
                 </h3>
-                <p className="text-[11px] text-gray-600 leading-relaxed text-center">
+                <p className="text-[11px] text-gray-600 leading-relaxed">
                   {office.text}
                 </p>
               </div>
