@@ -362,11 +362,12 @@ const MarketingOffices = () => {
           transition={{ duration: 0.4 }}
           className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100"
         >
-          <iframe
+   <iframe
   title="Office Location"
-  src={`https://www.google.com/maps/place/${encodeURIComponent(activeMap)}/?output=embed`}
+  src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(activeMap)}`}
   className="w-full h-[360px]"
   loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
 />
         </motion.div>
 
