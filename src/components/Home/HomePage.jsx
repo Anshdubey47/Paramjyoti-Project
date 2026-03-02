@@ -31,7 +31,7 @@ const HeroSection = () => {
         </h1>
 
         <div className="mt-8 flex justify-center">
-          <div className="flex items-stretch gap-3">
+          <div className="flex items-stretch gap-6">
             <div className="h-24 lg:h-32 w-10 flex-shrink-0">
               <img
                 src="/Vector 2.png"
@@ -41,16 +41,13 @@ const HeroSection = () => {
             </div>
             {heroImages.map((src) => (
               <div
-                key={src}
-                className="h-24 lg:h-32 w-32 lg:w-48 overflow-hidden"
-                style={{
-                  clipPath: "polygon(10% 0, 100% 0, 90% 100%, 0 100%)",
-                }}
-              >
+               key={src}
+               className="h-24 lg:h-32 w-24 lg:w-32 rotate-45 overflow-hidden shadow-lg flex items-center justify-center"
+                >
                 <img
                   src={src}
                   alt=""
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover -rotate-45 scale-125"
                 />
               </div>
             ))}
