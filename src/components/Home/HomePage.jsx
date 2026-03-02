@@ -40,17 +40,20 @@ const HeroSection = () => {
               />
             </div>
             {heroImages.map((src) => (
-              <div
-               key={src}
-               className="h-24 lg:h-32 w-24 lg:w-32 rotate-45 overflow-hidden shadow-lg flex items-center justify-center"
-                >
-                <img
-                  src={src}
-                  alt=""
-                  className="h-full w-full object-cover -rotate-45 scale-125"
-                />
-              </div>
-            ))}
+           <div
+           key={src}
+              className="relative h-28 lg:h-36 w-40 lg:w-60 overflow-hidden shadow-md"
+              style={{
+               clipPath: "polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%)",
+             }}
+             >
+          <img
+          src={src}
+           alt=""
+            className="h-full w-full object-cover"
+         />
+        </div>
+         ))}
           </div>
         </div>
 
