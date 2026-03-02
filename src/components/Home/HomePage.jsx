@@ -363,13 +363,11 @@ const MarketingOffices = () => {
           className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100"
         >
           <iframe
-            title="Office Location"
-            src={`https://www.google.com/maps?q=${encodeURIComponent(
-              activeMap
-            )}&output=embed`}
-            className="w-full h-[360px]"
-            loading="lazy"
-          />
+  title="Office Location"
+  src={`https://www.google.com/maps/place/${encodeURIComponent(activeMap)}/?output=embed`}
+  className="w-full h-[360px]"
+  loading="lazy"
+/>
         </motion.div>
 
         {/* Clickable Cards */}
