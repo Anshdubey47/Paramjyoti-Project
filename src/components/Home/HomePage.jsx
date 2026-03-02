@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiAward, FiClock, FiSettings, FiUsers } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
@@ -26,9 +27,14 @@ const HeroSection = () => {
   return (
     <section className="bg-[#f5f5f7]">
       <div className="max-w-5xl mx-auto px-6 py-12 lg:py-16 text-center">
-        <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight">
-          Empowering Innovation, Securing the Future
-        </h1>
+        <motion.h1
+  initial={{ opacity: 0, y: -40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight"
+>
+  Empowering Innovation, Securing the Future
+</motion.h1>
 
         <div className="mt-8 flex justify-center">
           <div className="flex items-stretch gap-1 justify-center">
@@ -41,14 +47,17 @@ const HeroSection = () => {
             </div>
            <div className="flex justify-center items-stretch">
   {heroImages.map((src, index) => (
-    <div
-      key={src}
-      className={`relative h-24 lg:h-32 w-56 lg:w-72 overflow-hidden 
-        ${index !== 0 ? "-ml-10 lg:-ml-14" : ""}`}
-      style={{
-        clipPath: "polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)",
-      }}
-    >
+  <motion.div
+    key={src}
+    initial={{ opacity: 0, x: 60 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6, delay: index * 0.2 }}
+    className={`relative h-24 lg:h-32 w-56 lg:w-72 overflow-hidden 
+      ${index !== 0 ? "-ml-10 lg:-ml-14" : ""}`}
+    style={{
+      clipPath: "polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)",
+    }}
+  >
       <img
         src={src}
         alt=""
@@ -140,19 +149,29 @@ const CapabilityIcons = () => {
   ];
 
   return (
-    <section className="bg-white">
+    <section className="bg-gradient-to-br from-orange-50 via-white to-orange-100">
       <div className="max-w-7xl mx-auto px-6 py-12 grid gap-6 md:grid-cols-4">
-        {items.map((item) => (
-          <div
+        {items.map((item, index) => (
+          <motion.div
             key={item.title}
-            className="rounded-2xl border border-gray-200 bg-gray-50 px-5 py-6 text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.15 }}
+            viewport={{ once: true }}
+            className="rounded-2xl bg-white/70 backdrop-blur-md border border-orange-100 px-6 py-6 text-center shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
           >
-            <div className="w-12 h-12 rounded-xl border border-gray-300 mx-auto mb-3 flex items-center justify-center">
-              <item.icon className="text-gray-700 text-lg" />
+            <div className="w-14 h-14 rounded-xl bg-orange-100 text-orange-600 mx-auto mb-4 flex items-center justify-center shadow-md">
+              <item.icon className="text-xl" />
             </div>
-            <h4 className="text-sm font-semibold text-gray-900 mb-2">{item.title}</h4>
-            <p className="text-xs text-gray-600 leading-relaxed">{item.text}</p>
-          </div>
+
+            <h4 className="text-sm font-semibold text-gray-900 mb-2">
+              {item.title}
+            </h4>
+
+            <p className="text-xs text-gray-600 leading-relaxed">
+              {item.text}
+            </p>
+          </motion.div>
         ))}
       </div>
     </section>
