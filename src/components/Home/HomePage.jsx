@@ -39,21 +39,24 @@ const HeroSection = () => {
                 className="h-full w-full object-contain"
               />
             </div>
-            {heroImages.map((src) => (
-           <div
-           key={src}
-              className="relative h-24 lg:h-32 w-52 lg:w-72 overflow-hidden"
-              style={{
-               clipPath: "polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%)",
-             }}
-             >
-          <img
-          src={src}
-           alt=""
-            className="h-full w-full object-cover"
-         />
-        </div>
-         ))}
+           <div className="flex justify-center items-stretch">
+  {heroImages.map((src, index) => (
+    <div
+      key={src}
+      className={`relative h-24 lg:h-32 w-56 lg:w-72 overflow-hidden 
+        ${index !== 0 ? "-ml-10 lg:-ml-14" : ""}`}
+      style={{
+        clipPath: "polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)",
+      }}
+    >
+      <img
+        src={src}
+        alt=""
+        className="h-full w-full object-cover"
+      />
+    </div>
+  ))}
+
           </div>
         </div>
 
