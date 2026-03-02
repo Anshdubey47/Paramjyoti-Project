@@ -358,7 +358,7 @@ const MarketingOffices = () => {
   setActiveMap(office.mapQuery);
   document.getElementById("map-section")?.scrollIntoView({ behavior: "smooth" });
 }}
-  </motion.div>
+ 
         {/* Dynamic Map */}
         <motion.div
   key={activeMap}
