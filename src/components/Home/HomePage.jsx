@@ -252,12 +252,12 @@ const SolutionsSection = () => {
             {firstRow.map((card) => (
               <div
                 key={card.title}
-                className="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col h-full"
-              >
+                className="group bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
+             >
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="h-52 md:h-56 w-full object-cover"
+                  className="h-52 md:h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="px-4 py-4 flex flex-col items-center gap-3 flex-1">
                   <span className="text-sm font-semibold text-gray-900 text-center">
@@ -266,7 +266,7 @@ const SolutionsSection = () => {
                   <button
                     type="button"
                     onClick={() => handleMore(card.title)}
-                    className="text-[11px] font-semibold text-orange-500 border border-orange-500 rounded-full px-3 py-1"
+                    className="text-[11px] font-semibold text-orange-500 border border-orange-500 rounded-full px-3 py-1 transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white"
                   >
                     MORE
                   </button>
@@ -279,13 +279,13 @@ const SolutionsSection = () => {
             {secondRow.map((card) => (
               <div
                 key={card.title}
-                className="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col"
+                className="group bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
                 style={{ width: "240px" }}
               >
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="h-52 md:h-56 w-full object-cover"
+                  className="h-52 md:h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="px-4 py-4 flex flex-col items-center gap-3 flex-1">
                   <span className="text-sm font-semibold text-gray-900 text-center">
@@ -294,7 +294,7 @@ const SolutionsSection = () => {
                   <button
                     type="button"
                     onClick={() => handleMore(card.title)}
-                    className="text-[11px] font-semibold text-orange-500 border border-orange-500 rounded-full px-3 py-1"
+                    className="text-[11px] font-semibold text-orange-500 border border-orange-500 rounded-full px-3 py-1 transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white"
                   >
                     MORE
                   </button>
