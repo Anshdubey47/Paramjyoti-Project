@@ -25,13 +25,13 @@ const HeroSection = () => {
   const heroImages = ["/image.png", "/Vector 3.png", "/image (1).png", "/image (2).png"];
 
   return (
-    <section className="bg-[#f5f5f7]">
+    <section className="bg-gradient-to-br from-orange-50 via-white to-orange-100">
       <div className="max-w-5xl mx-auto px-6 py-12 lg:py-16 text-center">
         <motion.h1
   initial={{ opacity: 0, y: -40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
-  className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight"
+  className="text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent"
 >
   Empowering Innovation, Securing the Future
 </motion.h1>
@@ -149,7 +149,7 @@ const CapabilityIcons = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-br from-orange-50 via-white to-orange-100">
+    <section className="bg-gradient-to-br from-orange-50 via-white to-orange-50">
       <div className="max-w-7xl mx-auto px-6 py-12 grid gap-6 md:grid-cols-4">
         {items.map((item, index) => (
           <motion.div
@@ -234,7 +234,7 @@ const SolutionsSection = () => {
   const secondRow = cards.slice(4);
 
   return (
-    <section id="solutions-section" className="bg-[#f5f5f7]">
+    <section id="solutions-section" className="bg-gradient-to-b from-white to orange-50">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -254,11 +254,14 @@ const SolutionsSection = () => {
                 key={card.title}
                 className="group bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
              >
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="h-52 md:h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                <div className="relative overflow-hidden">
+                   <img
+                     src={card.image}
+                     alt={card.title}
+                     className="h-52 md:h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                 </div>
                 <div className="px-4 py-4 flex flex-col items-center gap-3 flex-1">
                   <span className="text-sm font-semibold text-gray-900 text-center">
                     {card.title}
@@ -282,11 +285,14 @@ const SolutionsSection = () => {
                 className="group bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
                 style={{ width: "240px" }}
               >
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="h-52 md:h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                <div className="relative overflow-hidden">
+                   <img
+                       src={card.image}
+                       alt={card.title}
+                       className="h-52 md:h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                     />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+             </div>
                 <div className="px-4 py-4 flex flex-col items-center gap-3 flex-1">
                   <span className="text-sm font-semibold text-gray-900 text-center">
                     {card.title}
